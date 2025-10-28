@@ -251,12 +251,14 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-400 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold">W</span>
-                </div>
+                <img 
+                  src="/logo.png" 
+                  alt="Widget Story" 
+                  className="w-10 h-10 rounded-lg"
+                />
                 <span className="font-bold text-white">Widget Story</span>
               </div>
               <p className="text-sm text-gray-500">
@@ -275,22 +277,6 @@ export default function Home() {
                 <li>
                   <Link href="#" className="hover:text-white transition">
                     Android (Sắp Có)
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-4">Công Ty</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link href="#" className="hover:text-white transition">
-                    Về Chúng Tôi
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-white transition">
-                    Blog
                   </Link>
                 </li>
               </ul>
