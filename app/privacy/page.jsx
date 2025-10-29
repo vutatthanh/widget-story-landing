@@ -180,7 +180,7 @@ export default function PrivacyPolicy() {
             </div>
 
             <div className="text-center text-gray-500 text-sm border-t pt-6">
-              <p><strong>{t('privacy.lastUpdated')}:</strong> January 15, 2025</p>
+              <p><strong>{t('privacy.lastUpdated')}:</strong> November 1, 2025</p>
               <p><strong>{t('privacy.version')}:</strong> 1.0</p>
             </div>
           </div>
