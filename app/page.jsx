@@ -146,25 +146,14 @@ export default function Home() {
             </div>
 
             <div className={`relative h-96 sm:h-[500px] transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-              <div className="absolute inset-0 gradient-primary rounded-2xl opacity-10 blur-3xl animate-pulse"></div>
-              <div className="relative h-full rounded-2xl overflow-hidden shadow-lg-custom transform hover:scale-105 transition-all duration-500">
+              <div className="relative h-full rounded-2xl overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=800&fit=crop"
+                  src="/images/hero/s1.png"
                   alt="Widget Story App"
                   fill
-                  className="object-cover"
+                  className="object-scale-down"
                   priority
                 />
-                {/* Floating Widget Icons */}
-                <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 rounded-lg flex items-center justify-center text-2xl animate-bounce delay-700">
-                  📱
-                </div>
-                <div className="absolute bottom-4 left-4 w-10 h-10 bg-white/90 rounded-lg flex items-center justify-center text-xl animate-bounce delay-1000">
-                  📖
-                </div>
-                <div className="absolute top-1/2 right-8 w-8 h-8 bg-white/90 rounded-lg flex items-center justify-center text-lg animate-bounce delay-1200">
-                  🎨
-                </div>
               </div>
             </div>
           </div>
