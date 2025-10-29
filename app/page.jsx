@@ -230,6 +230,56 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Premium Features Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-50 to-blue-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
+              {t('premium.title')}
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              {t('premium.subtitle')}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {t('premium.features').map((feature, index) => (
+              <div
+                key={index}
+                className={`bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group ${
+                  isVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-10'
+                }`}
+                style={{
+                  transitionDelay: `${index * 100}ms`
+                }}
+              >
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-300">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                  {feature.description}
+                </p>
+                <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-purple-200 transition-colors duration-300 pointer-events-none"></div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link
+              href="#features"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-purple-600 text-purple-600 font-semibold rounded-lg hover:bg-purple-600 hover:text-white transition-all duration-300 transform hover:scale-105"
+            >
+              {t('premium.learnMore')}
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section id="download" className="py-20 px-4 sm:px-6 lg:px-8 gradient-primary relative overflow-hidden">
         {/* Animated background elements */}
