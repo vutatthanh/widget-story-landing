@@ -47,6 +47,17 @@ export default function PrivacyPolicy() {
           <h1 className="text-4xl font-bold text-gray-900 text-center mb-4">
             {t('privacy.title')}
           </h1>
+          <div className="flex justify-center mb-4">
+            <div className="w-16 h-16 rounded-xl overflow-hidden">
+              <Image
+                src="/logo.png"
+                alt="Widget Story Logo"
+                width={64}
+                height={64}
+                className="object-cover w-full h-full"
+              />
+            </div>
+          </div>
           <p className="text-center text-gray-600 mb-8">
             {t('privacy.subtitle')}
           </p>
