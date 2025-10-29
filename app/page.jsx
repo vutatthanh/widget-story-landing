@@ -3,47 +3,26 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import LanguageSwitcher from '../components/LanguageSwitcher'
+import { useLanguage } from '../lib/contexts/LanguageContext'
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
+  const { t, isLoading } = useLanguage()
 
   useEffect(() => {
     setIsVisible(true)
   }, [])
 
-  const features = [
-    {
-      icon: '📱',
-      title: 'Widget Tùy Chỉnh',
-      description: 'Tạo các widget đẹp mắt trên màn hình điện thoại với ảnh, bộ sưu tập, hiệu ứng, lịch và đồng hồ',
-    },
-    {
-      icon: '📖',
-      title: 'Story - Câu Chuyện Hình Ảnh',
-      description: 'Tạo hình ảnh mô phỏng các widget sắp xếp trên màn hình, kể câu chuyện bằng hình ảnh thay vì lưu trữ rời rạc',
-    },
-    {
-      icon: '📚',
-      title: 'Story Book - Sách Kỹ Thuật Số',
-      description: 'Ghép nối các story thành bộ sưu tập hoàn chỉnh như cuốn sách, tổng hợp hình ảnh du lịch thành sách PDF hấp dẫn',
-    },
-    {
-      icon: '💡',
-      title: 'Greatmind - Động Lực Hàng Ngày',
-      description: 'Hiển thị câu nói nổi tiếng của vĩ nhân kèm hình ảnh vẽ chì tinh tế, nội dung tự động thay đổi',
-    },
-    {
-      icon: '🎨',
-      title: 'Theme - Giao Diện Cá Nhân',
-      description: 'Thay đổi màu sắc chủ đề và biểu tượng ứng dụng phù hợp với màu sắc chung trên điện thoại',
-    },
-    {
-      icon: '🔗',
-      title: 'Chia Sẻ Dễ Dàng',
-      description: 'Dễ dàng chia sẻ widget và story cho bạn bè, người thân qua các nền tảng mạng xã hội',
-    },
-  ]
+  // Don't render until language is loaded
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+      </div>
+    )
+  }
 
   return (
     <>
@@ -65,13 +44,14 @@ export default function Home() {
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex items-center space-x-8">
               <Link href="#features" className="text-gray-600 hover:text-gray-900 hover:scale-105 transition-all duration-300 transform">
-                Tính Năng
+                {t('nav.features')}
               </Link>
               <Link href="#download" className="text-gray-600 hover:text-gray-900 hover:scale-105 transition-all duration-300 transform">
-                Tải Ứng Dụng
+                {t('nav.download')}
               </Link>
+              <LanguageSwitcher />
             </div>
 
             {/* Mobile Menu Button */}
@@ -102,14 +82,17 @@ export default function Home() {
                 href="#features"
                 className="block text-gray-600 hover:text-gray-900 py-2"
               >
-                Tính Năng
+                {t('nav.features')}
               </Link>
               <Link
                 href="#download"
                 className="block text-gray-600 hover:text-gray-900 py-2"
               >
-                Tải Ứng Dụng
+                {t('nav.download')}
               </Link>
+              <div className="pt-2">
+                <LanguageSwitcher />
+              </div>
             </div>
           )}
         </div>
@@ -129,12 +112,11 @@ export default function Home() {
             <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="space-y-4">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                  Tạo Widget{' '}
-                  <span className="gradient-text animate-pulse">Đẹp Mắt</span> Cho Điện Thoại
+                  {t('hero.title')}{' '}
+                  <span className="gradient-text animate-pulse">{t('hero.titleHighlight')}</span> {t('hero.titleSuffix')}
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Widget Story là ứng dụng di động cho phép bạn tạo các widget tùy chỉnh với ảnh, 
-                  hiệu ứng, lịch và đồng hồ. Tạo câu chuyện hình ảnh và chia sẻ dễ dàng!
+                  {t('hero.description')}
                 </p>
               </div>
 
@@ -152,13 +134,13 @@ export default function Home() {
                   >
                     <path d="M17.05 13.5c-.91 0-1.82-.45-1.82-1.31h5.38c.14-2.2-.56-3.86-1.82-4.87-1.23-1.02-2.75-.97-4.02.14-1.56 1.36-1.73 3.85 0 5.35 1.27 1.1 2.61 1.34 4.03.58.77-.43 1.24-1.05 1.38-1.93h-5.38c.05.96.81 1.31 1.73 1.31h2.1v2.64h-2.9c-2.33 0-3.25-1.46-3.25-4.18v-2.5c0-2.72.92-4.18 3.25-4.18h2.9V6h-2.1c-.92 0-1.68.35-1.73 1.31h5.38c-.14-.88-.61-1.5-1.38-1.93-1.42-.76-2.76-.52-4.03.58-1.73 1.5-1.56 3.99 0 5.35 1.27 1.11 2.79 1.16 4.02.14 1.26-1.01 1.96-2.67 1.82-4.87h-5.38c0 .86.91 1.31 1.82 1.31h2.9v2.64h-2.1z" />
                   </svg>
-                  Tải iOS
+                  {t('hero.downloadIos')}
                 </Link>
                 <Link
                   href="#features"
                   className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 text-gray-900 font-semibold rounded-lg hover:border-gray-400 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
                 >
-                  Khám Phá Thêm
+                  {t('hero.exploreMore')}
                 </Link>
               </div>
             </div>
@@ -194,15 +176,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
-              Tính Năng Độc Đáo
+              {t('features.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Tạo widget đẹp mắt, kể câu chuyện bằng hình ảnh và chia sẻ dễ dàng
+              {t('features.subtitle')}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
+            {t('features.items').map((feature, index) => (
               <div
                 key={index}
                 className={`bg-white rounded-xl p-8 shadow-md hover:shadow-lg-custom transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 group ${
@@ -245,15 +227,15 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div className={`space-y-2 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{transitionDelay: '200ms'}}>
               <div className="text-5xl font-bold gradient-text animate-pulse hover:animate-none hover:scale-110 transition-transform duration-300 cursor-pointer">50K+</div>
-              <p className="text-lg text-gray-600 hover:text-gray-800 transition-colors duration-300">Widget Được Tạo</p>
+              <p className="text-lg text-gray-600 hover:text-gray-800 transition-colors duration-300">{t('stats.widgetsCreated')}</p>
             </div>
             <div className={`space-y-2 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{transitionDelay: '400ms'}}>
               <div className="text-5xl font-bold gradient-text animate-pulse hover:animate-none hover:scale-110 transition-transform duration-300 cursor-pointer">10K+</div>
-              <p className="text-lg text-gray-600 hover:text-gray-800 transition-colors duration-300">Story Book Xuất Bản</p>
+              <p className="text-lg text-gray-600 hover:text-gray-800 transition-colors duration-300">{t('stats.storyBooksPublished')}</p>
             </div>
             <div className={`space-y-2 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{transitionDelay: '600ms'}}>
               <div className="text-5xl font-bold gradient-text animate-pulse hover:animate-none hover:scale-110 transition-transform duration-300 cursor-pointer">1M+</div>
-              <p className="text-lg text-gray-600 hover:text-gray-800 transition-colors duration-300">Lượt Chia Sẻ</p>
+              <p className="text-lg text-gray-600 hover:text-gray-800 transition-colors duration-300">{t('stats.shares')}</p>
             </div>
           </div>
         </div>
@@ -272,10 +254,10 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
           <div className={`space-y-4 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl sm:text-5xl font-bold text-white animate-pulse hover:animate-none">
-              Bắt Đầu Tạo Widget?
+              {t('cta.title')}
             </h2>
             <p className="text-xl text-white/90 hover:text-white transition-colors duration-300">
-              Tải Widget Story ngay hôm nay và tạo những widget đẹp mắt, kể câu chuyện bằng hình ảnh
+              {t('cta.description')}
             </p>
           </div>
 
@@ -293,7 +275,7 @@ export default function Home() {
               >
                 <path d="M17.05 13.5c-.91 0-1.82-.45-1.82-1.31h5.38c.14-2.2-.56-3.86-1.82-4.87-1.23-1.02-2.75-.97-4.02.14-1.56 1.36-1.73 3.85 0 5.35 1.27 1.1 2.61 1.34 4.03.58.77-.43 1.24-1.05 1.38-1.93h-5.38c.05.96.81 1.31 1.73 1.31h2.1v2.64h-2.9c-2.33 0-3.25-1.46-3.25-4.18v-2.5c0-2.72.92-4.18 3.25-4.18h2.9V6h-2.1c-.92 0-1.68.35-1.73 1.31h5.38c-.14-.88-.61-1.5-1.38-1.93-1.42-.76-2.76-.52-4.03.58-1.73 1.5-1.56 3.99 0 5.35 1.27 1.11 2.79 1.16 4.02.14 1.26-1.01 1.96-2.67 1.82-4.87h-5.38c0 .86.91 1.31 1.82 1.31h2.9v2.64h-2.1z" />
               </svg>
-              Tải Ngay trên App Store
+              {t('cta.downloadAppStore')}
             </Link>
           </div>
         </div>
@@ -313,37 +295,37 @@ export default function Home() {
                 <span className="font-bold text-white">Widget Story</span>
               </div>
               <p className="text-sm text-gray-500">
-                Ứng dụng tạo widget đẹp mắt và kể câu chuyện bằng hình ảnh
+                {t('footer.description')}
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-white mb-4">Ứng Dụng</h4>
+              <h4 className="font-semibold text-white mb-4">{t('footer.app')}</h4>
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link href="#" className="hover:text-white transition">
-                    iOS
+                    {t('footer.ios')}
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-white transition">
-                    Android (Sắp Có)
+                    {t('footer.androidComing')}
                   </Link>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-semibold text-white mb-4">Pháp Lý</h4>
+              <h4 className="font-semibold text-white mb-4">{t('footer.legal')}</h4>
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link href="#" className="hover:text-white transition">
-                    Chính Sách Bảo Mật
+                    {t('footer.privacyPolicy')}
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-white transition">
-                    Điều Khoản Dịch Vụ
+                    {t('footer.termsOfService')}
                   </Link>
                 </li>
               </ul>
@@ -353,7 +335,7 @@ export default function Home() {
           <div className="border-t border-gray-800 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-sm text-gray-500">
-                © 2025 Widget Story. Tất cả quyền được bảo lưu.
+                {t('footer.copyright')}
               </p>
               <div className="flex space-x-6 mt-4 md:mt-0">
                 <Link href="#" className="text-gray-400 hover:text-white transition">

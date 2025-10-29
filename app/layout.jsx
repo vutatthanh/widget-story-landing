@@ -1,3 +1,4 @@
+import { LanguageProvider } from '../lib/contexts/LanguageContext'
 import './globals.css'
 
 export const metadata = {
@@ -29,7 +30,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="vi">
+    <html lang="en">
       <head>
         {/* Safari specific meta tags */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -49,7 +50,11 @@ export default function RootLayout({ children }) {
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2" />
       </head>
-      <body className="bg-white">{children}</body>
+      <body className="bg-white">
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
+      </body>
     </html>
   )
 }
