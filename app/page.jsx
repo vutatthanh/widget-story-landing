@@ -9,34 +9,34 @@ export default function Home() {
 
   const features = [
     {
-      icon: '✨',
-      title: 'Tạo Câu Chuyện Dễ Dàng',
-      description: 'Giao diện trực quan cho phép bạn tạo câu chuyện tương tác chỉ trong vài phút',
+      icon: '📱',
+      title: 'Widget Tùy Chỉnh',
+      description: 'Tạo các widget đẹp mắt trên màn hình điện thoại với ảnh, bộ sưu tập, hiệu ứng, lịch và đồng hồ',
+    },
+    {
+      icon: '📖',
+      title: 'Story - Câu Chuyện Hình Ảnh',
+      description: 'Tạo hình ảnh mô phỏng các widget sắp xếp trên màn hình, kể câu chuyện bằng hình ảnh thay vì lưu trữ rời rạc',
+    },
+    {
+      icon: '📚',
+      title: 'Story Book - Sách Kỹ Thuật Số',
+      description: 'Ghép nối các story thành bộ sưu tập hoàn chỉnh như cuốn sách, tổng hợp hình ảnh du lịch thành sách PDF hấp dẫn',
+    },
+    {
+      icon: '💡',
+      title: 'Greatmind - Động Lực Hàng Ngày',
+      description: 'Hiển thị câu nói nổi tiếng của vĩ nhân kèm hình ảnh vẽ chì tinh tế, nội dung tự động thay đổi',
     },
     {
       icon: '🎨',
-      title: 'Tùy Chỉnh Toàn Diện',
-      description: 'Chọn từ hàng trăm templates, màu sắc và effects độc đáo',
+      title: 'Theme - Giao Diện Cá Nhân',
+      description: 'Thay đổi màu sắc chủ đề và biểu tượng ứng dụng phù hợp với màu sắc chung trên điện thoại',
     },
     {
       icon: '🔗',
       title: 'Chia Sẻ Dễ Dàng',
-      description: 'Chia sẻ công việc của bạn với bạn bè qua link hoặc mạng xã hội',
-    },
-    {
-      icon: '💬',
-      title: 'Tương Tác Thực Thời',
-      description: 'Nhận phản hồi từ người xem và xem họ tương tác với câu chuyện',
-    },
-    {
-      icon: '📱',
-      title: 'Tối Ưu Mobile',
-      description: 'Tận hưởng trải nghiệm hoàn hảo trên bất kỳ thiết bị nào',
-    },
-    {
-      icon: '🚀',
-      title: 'Luôn Cập Nhật',
-      description: 'Các tính năng mới được thêm vào mỗi tháng',
+      description: 'Dễ dàng chia sẻ widget và story cho bạn bè, người thân qua các nền tảng mạng xã hội',
     },
   ]
 
@@ -117,12 +117,12 @@ export default function Home() {
             <div className="space-y-8">
               <div className="space-y-4">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                  Tạo Câu Chuyện{' '}
-                  <span className="gradient-text">Tương Tác</span> Của Riêng Bạn
+                  Tạo Widget{' '}
+                  <span className="gradient-text">Đẹp Mắt</span> Cho Điện Thoại
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Widget Story là nền tảng cho phép bạn tạo và chia sẻ các câu chuyện hấp dẫn
-                  với widgets tương tác. Không cần kỹ năng lập trình, chỉ cần tượng tưởng!
+                  Widget Story là ứng dụng di động cho phép bạn tạo các widget tùy chỉnh với ảnh, 
+                  hiệu ứng, lịch và đồng hồ. Tạo câu chuyện hình ảnh và chia sẻ dễ dàng!
                 </p>
               </div>
 
@@ -172,10 +172,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
-              Tính Năng Nổi Bật
+              Tính Năng Độc Đáo
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Tất cả những gì bạn cần để tạo các câu chuyện tương tác tuyệt vời
+              Tạo widget đẹp mắt, kể câu chuyện bằng hình ảnh và chia sẻ dễ dàng
             </p>
           </div>
 
@@ -203,16 +203,16 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div className="space-y-2">
-              <div className="text-5xl font-bold gradient-text">100K+</div>
-              <p className="text-lg text-gray-600">Người Dùng Hoạt Động</p>
+              <div className="text-5xl font-bold gradient-text">50K+</div>
+              <p className="text-lg text-gray-600">Widget Được Tạo</p>
             </div>
             <div className="space-y-2">
-              <div className="text-5xl font-bold gradient-text">500K+</div>
-              <p className="text-lg text-gray-600">Câu Chuyện Được Tạo</p>
+              <div className="text-5xl font-bold gradient-text">10K+</div>
+              <p className="text-lg text-gray-600">Story Book Xuất Bản</p>
             </div>
             <div className="space-y-2">
-              <div className="text-5xl font-bold gradient-text">5M+</div>
-              <p className="text-lg text-gray-600">Người Xem Hàng Tháng</p>
+              <div className="text-5xl font-bold gradient-text">1M+</div>
+              <p className="text-lg text-gray-600">Lượt Chia Sẻ</p>
             </div>
           </div>
         </div>
@@ -223,10 +223,10 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <div className="space-y-4">
             <h2 className="text-4xl sm:text-5xl font-bold text-white">
-              Sẵn Sàng Bắt Đầu?
+              Bắt Đầu Tạo Widget?
             </h2>
             <p className="text-xl text-white/90">
-              Tải Widget Story ngay hôm nay và bắt đầu tạo các câu chuyện tương tác tuyệt vời
+              Tải Widget Story ngay hôm nay và tạo những widget đẹp mắt, kể câu chuyện bằng hình ảnh
             </p>
           </div>
 
@@ -262,7 +262,7 @@ export default function Home() {
                 <span className="font-bold text-white">Widget Story</span>
               </div>
               <p className="text-sm text-gray-500">
-                Tạo câu chuyện tương tác tuyệt vời
+                Ứng dụng tạo widget đẹp mắt và kể câu chuyện bằng hình ảnh
               </p>
             </div>
 
