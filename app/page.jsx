@@ -197,7 +197,7 @@ export default function Home() {
             {t('features.items').map((feature, index) => (
               <div
                 key={index}
-                className={`relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group border border-gray-100 ${
+                className={`relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group border border-gray-100 overflow-hidden ${
                   isVisible 
                     ? 'opacity-100 translate-y-0' 
                     : 'opacity-0 translate-y-10'
@@ -206,17 +206,17 @@ export default function Home() {
                   transitionDelay: `${index * 150}ms`
                 }}
               >
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-t-2xl"></div>
-                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-t-2xl z-20"></div>
+                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10">
                   {feature.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300 relative z-10">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-lg group-hover:text-gray-700 transition-colors duration-300">
+                <p className="text-gray-600 leading-relaxed text-lg group-hover:text-gray-700 transition-colors duration-300 relative z-10">
                   {feature.description}
                 </p>
-                <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-blue-200 transition-colors duration-300 pointer-events-none"></div>
+                <div className="absolute top-1 left-0 right-0 bottom-0 rounded-b-2xl border-2 border-transparent group-hover:border-blue-200 group-hover:border-t-0 transition-colors duration-300 pointer-events-none z-0"></div>
               </div>
             ))}
           </div>
