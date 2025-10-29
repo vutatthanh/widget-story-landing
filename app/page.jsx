@@ -287,10 +287,12 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
-                <img 
+                <Image 
                   src="/logo.png" 
                   alt="Widget Story" 
-                  className="w-10 h-10 rounded-lg"
+                  width={40}
+                  height={40}
+                  className="w-10 h-10 rounded-lg object-cover"
                 />
                 <span className="font-bold text-white">Widget Story</span>
               </div>
