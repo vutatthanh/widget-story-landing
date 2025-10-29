@@ -168,10 +168,10 @@ export default function PrivacyPolicy() {
               <p className="mb-4">{t('privacy.sections.contact.description')}</p>
               <ul className="space-y-2">
                 <li className="text-gray-700">
-                  <strong>{t('privacy.sections.contact.email')}:</strong> tech@widgetstory.app
+                  <strong>{t('privacy.sections.contact.email')}:</strong> contact@widgetstory.com
                 </li>
                 <li className="text-gray-700">
-                  <strong>{t('privacy.sections.contact.website')}:</strong> https://widgetstory.app
+                  <strong>{t('privacy.sections.contact.website')}:</strong> https://widgetstory.com
                 </li>
               </ul>
               <p className="mt-4 text-gray-600 italic">
