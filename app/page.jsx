@@ -13,6 +13,7 @@ export default function Home() {
   const [quotes, setQuotes] = useState([])
   const [quoteIndex, setQuoteIndex] = useState(0)
   const [isQuoteDark, setIsQuoteDark] = useState(false)
+  const [isQuoteTransitioning, setIsQuoteTransitioning] = useState(false)
 
   useEffect(() => {
     setIsVisible(true)
@@ -36,15 +37,17 @@ export default function Home() {
   useEffect(() => {
     if (!quotes || quotes.length === 0) return;
     const interval = setInterval(() => {
-      let next = Math.floor(Math.random() * quotes.length);
-      // Không lặp lại quote liên tiếp
-      if (quotes.length > 1 && next === quoteIndex) {
-        next = (next + 1) % quotes.length;
-      }
-      setQuoteIndex(next);
-      // Đổi theme xen kẽ (có thể thay bằng Math.random() > 0.5 nếu muốn ngẫu nhiên)
-      setIsQuoteDark(prev => !prev);
-    }, 5000);
+      setIsQuoteTransitioning(true)
+      setTimeout(() => {
+        let next = Math.floor(Math.random() * quotes.length)
+        if (quotes.length > 1 && next === quoteIndex) {
+          next = (next + 1) % quotes.length
+        }
+        setQuoteIndex(next)
+        setIsQuoteDark(prev => !prev)
+        setIsQuoteTransitioning(false)
+      }, 220) // thời gian fade-out trước khi đổi nội dung
+    }, 5000)
     return () => clearInterval(interval);
   }, [quotes, quoteIndex]);
 
@@ -263,7 +266,7 @@ export default function Home() {
         <div className="w-full max-w-2xl mx-auto">
           <div className="text-center mb-8">
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900">Great Minds Quotes</h2>
-            <p className="text-lg text-gray-600 mt-3">Những câu nói truyền cảm hứng từ các vĩ nhân</p>
+            <p className="text-lg text-gray-600 mt-3">{t?.('greatmind.quoteSectionSub') || 'Những câu nói truyền cảm hứng từ các vĩ nhân'}</p>
           </div>
           {quotes.length > 0 && (
             (() => {
@@ -277,7 +280,7 @@ export default function Home() {
                     isQuoteDark
                       ? 'bg-slate-900 border border-slate-700'
                       : 'bg-white border border-gray-100'
-                  } ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+                  } ${isVisible ? 'scale-100' : 'scale-95'} ${isQuoteTransitioning ? 'opacity-0 translate-y-2 blur-[1px]' : 'opacity-100 translate-y-0 blur-0'}`}
                   style={{ maxWidth: 550, minHeight: 170 }}
                 >
                   <div className="flex-shrink-0">
@@ -300,7 +303,7 @@ export default function Home() {
                       <span className={`text-[20px] font-bold leading-tight truncate ${isQuoteDark ? 'text-white' : 'text-gray-900'}`}>{authorName}</span>
                       <span className={`text-[13px] truncate ${isQuoteDark ? 'text-gray-300' : 'text-gray-500'}`}>{q.category || 'Quote'}</span>
                       <div className="mt-4">
-                        <p className={`text-[22px] italic leading-snug ${isQuoteDark ? 'text-white' : 'text-gray-800'}`} style={{ lineHeight: 1.35, minHeight: 60 }}>
+                        <p className={`text-[22px] italic leading-snug transition-colors duration-500 ${isQuoteDark ? 'text-white' : 'text-gray-800'}`} style={{ lineHeight: 1.35, minHeight: 60 }}>
                           “{q.text}”
                         </p>
                       </div>
