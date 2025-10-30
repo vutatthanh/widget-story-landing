@@ -240,7 +240,7 @@ export default function Home() {
             {featuresList.map((feature, index) => (
               <div
                 key={index}
-                className={`relative rounded-2xl p-8 shadow-xl hover:shadow-2xl bg-slate-900 transition-all duration-500 transform hover:-translate-y-3 group border border-slate-700 overflow-hidden ${
+                className={`relative rounded-2xl p-5 shadow-xl hover:shadow-2xl bg-slate-900 transition-all duration-500 transform hover:-translate-y-3 group border border-slate-700 overflow-hidden ${
                   isVisible 
                     ? 'opacity-100 translate-y-0' 
                     : 'opacity-0 translate-y-10'
@@ -280,7 +280,7 @@ export default function Home() {
                       ? 'bg-slate-900 border border-slate-700'
                       : 'bg-white border border-gray-100'
                   } ${isVisible ? 'scale-100' : 'scale-95'} ${isQuoteTransitioning ? 'opacity-0 translate-y-2 blur-[1px]' : 'opacity-100 translate-y-0 blur-0'}`}
-                  style={{ maxWidth: 550, minHeight: 170 }}
+                  style={{ maxWidth: 550, minHeight: 190, maxHeight: 210, overflow: 'hidden' }}
                 >
                   <div className="flex-shrink-0">
                     <div className={`w-16 h-16 rounded-full border-4 overflow-hidden shadow-sm ${isQuoteDark ? 'border-white bg-slate-700' : 'border-white bg-gray-200'}`}
@@ -302,7 +302,8 @@ export default function Home() {
                       <span className={`text-[20px] font-bold leading-tight truncate ${isQuoteDark ? 'text-white' : 'text-gray-900'}`}>{authorName}</span>
                       <span className={`text-[13px] truncate ${isQuoteDark ? 'text-gray-300' : 'text-gray-500'}`}>{q.category || 'Quote'}</span>
                       <div className="mt-4">
-                        <p className={`text-[22px] italic leading-snug transition-colors duration-500 ${isQuoteDark ? 'text-white' : 'text-gray-800'}`} style={{ lineHeight: 1.35, minHeight: 60 }}>
+                        <p className={`text-[22px] italic leading-snug transition-colors duration-500 ${isQuoteDark ? 'text-white' : 'text-gray-800'} line-clamp-2`} 
+                          style={{ lineHeight: 1.35, minHeight: 60, maxHeight: 58, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
                           “{q.text}”
                         </p>
                       </div>
@@ -320,7 +321,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
-              {t('premium.title')}
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                {t('premium.title').replace(/^([A-Za-zÀ-ỹ& ]+?)(\s|$)/, '$1')}
+              </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               {t('premium.subtitle')}
@@ -331,7 +334,7 @@ export default function Home() {
             {premiumList.map((feature, index) => (
               <div
                 key={index}
-                className={`bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group border border-gray-100 overflow-hidden ${
+                className={`bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group border border-gray-100 overflow-hidden ${
                   isVisible 
                     ? 'opacity-100 translate-y-0' 
                     : 'opacity-0 translate-y-10'
