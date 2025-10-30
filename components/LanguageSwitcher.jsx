@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useLanguage } from '../lib/contexts/LanguageContext'
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({ onAction }) {
   const { language, changeLanguage } = useLanguage()
   const [isOpen, setIsOpen] = useState(false)
 
@@ -40,6 +40,9 @@ export default function LanguageSwitcher() {
               onClick={() => {
                 changeLanguage(lang.code)
                 setIsOpen(false)
+                if (typeof onAction === 'function') {
+                  onAction()
+                }
               }}
               className={`w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-gray-50 transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg ${
                 language === lang.code ? 'bg-blue-50 text-blue-600' : 'text-gray-700'

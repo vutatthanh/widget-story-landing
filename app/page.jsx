@@ -81,17 +81,19 @@ export default function Home() {
               <Link
                 href="#features"
                 className="block text-gray-600 hover:text-gray-900 py-2"
+                onClick={() => setIsMenuOpen(false)}
               >
                 {t('nav.features')}
               </Link>
               <Link
                 href="#download"
                 className="block text-gray-600 hover:text-gray-900 py-2"
+                onClick={() => setIsMenuOpen(false)}
               >
                 {t('nav.download')}
               </Link>
               <div className="pt-2">
-                <LanguageSwitcher />
+                <LanguageSwitcher onAction={() => setIsMenuOpen(false)} />
               </div>
             </div>
           )}
