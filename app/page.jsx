@@ -129,7 +129,7 @@ export default function Home() {
                   href="https://apps.apple.com/your-app-link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center rounded-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/25"
+                  className="group inline-flex items-center justify-center rounded-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-0 focus:shadow-none"
                 >
                   <Image
                     src="/images/icons/appstore_download.png"
@@ -334,7 +334,7 @@ export default function Home() {
               href="https://apps.apple.com/your-app-link"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center rounded-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/25"
+              className="group inline-flex items-center justify-center rounded-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 focus:outline-none focus:ring-0 focus:shadow-none"
             >
               <Image
                 src="/images/icons/appstore_download_light.png"
