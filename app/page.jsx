@@ -337,7 +337,7 @@ export default function Home() {
               className="group inline-flex items-center justify-center rounded-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/25"
             >
               <Image
-                src="/images/icons/appstore_download.png"
+                src="/images/icons/appstore_download_light.png"
                 alt={t('cta.downloadAppStore')}
                 width={496}
                 height={172}
