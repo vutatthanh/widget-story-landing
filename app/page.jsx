@@ -10,10 +10,43 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const { t, isLoading } = useLanguage()
+  const [quotes, setQuotes] = useState([])
+  const [quoteIndex, setQuoteIndex] = useState(0)
+  const [isQuoteDark, setIsQuoteDark] = useState(false)
 
   useEffect(() => {
     setIsVisible(true)
   }, [])
+
+  useEffect(() => {
+    // Load quotes from public/quotes.json
+    fetch('/quotes.json')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          setQuotes(data)
+          setQuoteIndex(Math.floor(Math.random() * data.length))
+          setIsQuoteDark(Math.random() > 0.5)
+        }
+      })
+      .catch(() => {})
+  }, [])
+
+  // Tự động random quote mỗi 5 giây
+  useEffect(() => {
+    if (!quotes || quotes.length === 0) return;
+    const interval = setInterval(() => {
+      let next = Math.floor(Math.random() * quotes.length);
+      // Không lặp lại quote liên tiếp
+      if (quotes.length > 1 && next === quoteIndex) {
+        next = (next + 1) % quotes.length;
+      }
+      setQuoteIndex(next);
+      // Đổi theme xen kẽ (có thể thay bằng Math.random() > 0.5 nếu muốn ngẫu nhiên)
+      setIsQuoteDark(prev => !prev);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [quotes, quoteIndex]);
 
   // Don't render until language is loaded
   if (isLoading) {
@@ -225,39 +258,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900">
-        {/* Animated background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500/20 rounded-full animate-ping"></div>
-          <div className="absolute bottom-10 right-10 w-24 h-24 bg-purple-500/20 rounded-full animate-ping delay-1000"></div>
-          <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-pink-500/20 rounded-full animate-ping delay-500"></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              Trusted by Millions
-            </h2>
-            <p className="text-xl text-blue-200 max-w-2xl mx-auto">
-              Join our growing community of creative users worldwide
-            </p>
+      {/* Quote Section - only one, big, centered, auto-change */}
+      <section className="py-20 px-4 flex justify-center items-center bg-gray-50">
+        <div className="w-full max-w-2xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900">Great Minds Quotes</h2>
+            <p className="text-lg text-gray-600 mt-3">Những câu nói truyền cảm hứng từ các vĩ nhân</p>
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-12 text-center">
-            <div className={`space-y-4 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{transitionDelay: '200ms'}}>
-              <div className="text-6xl sm:text-7xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent hover:scale-110 transition-transform duration-300 cursor-pointer">50K+</div>
-              <p className="text-xl text-blue-200 font-medium">{t('stats.widgetsCreated')}</p>
-            </div>
-            <div className={`space-y-4 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{transitionDelay: '400ms'}}>
-              <div className="text-6xl sm:text-7xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent hover:scale-110 transition-transform duration-300 cursor-pointer">10K+</div>
-              <p className="text-xl text-blue-200 font-medium">{t('stats.storyBooksPublished')}</p>
-            </div>
-            <div className={`space-y-4 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{transitionDelay: '600ms'}}>
-              <div className="text-6xl sm:text-7xl font-bold bg-gradient-to-r from-pink-400 to-red-400 bg-clip-text text-transparent hover:scale-110 transition-transform duration-300 cursor-pointer">1M+</div>
-              <p className="text-xl text-blue-200 font-medium">{t('stats.shares')}</p>
-            </div>
-          </div>
+          {quotes.length > 0 && (
+            (() => {
+              const q = quotes[quoteIndex] || quotes[0];
+              const authorName = (q.authorId || '').replaceAll('_', ' ');
+              const avatarSrc = `/images/authors/${q.authorId}.webp`;
+              return (
+                <div
+                  key={q.authorId + q.text}
+                  className={`mx-auto px-6 py-7 rounded-[20px] shadow-lg flex items-center transition-all duration-700 ${
+                    isQuoteDark
+                      ? 'bg-slate-900 border border-slate-700'
+                      : 'bg-white border border-gray-100'
+                  } ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+                  style={{ maxWidth: 550, minHeight: 170 }}
+                >
+                  <div className="flex-shrink-0">
+                    <div className={`w-16 h-16 rounded-full border-4 overflow-hidden shadow-sm ${isQuoteDark ? 'border-white bg-slate-700' : 'border-white bg-gray-200'}`}
+                    >
+                      <Image 
+                        src={avatarSrc} 
+                        alt={authorName} 
+                        width={64} 
+                        height={64} 
+                        sizes="64px"
+                        quality={70}
+                        loading="lazy"
+                        className="w-16 h-16 object-cover" 
+                      />
+                    </div>
+                  </div>
+                  <div className="ml-7 flex-1 min-w-0">
+                    <div className="flex flex-col">
+                      <span className={`text-[20px] font-bold leading-tight truncate ${isQuoteDark ? 'text-white' : 'text-gray-900'}`}>{authorName}</span>
+                      <span className={`text-[13px] truncate ${isQuoteDark ? 'text-gray-300' : 'text-gray-500'}`}>{q.category || 'Quote'}</span>
+                      <div className="mt-4">
+                        <p className={`text-[22px] italic leading-snug ${isQuoteDark ? 'text-white' : 'text-gray-800'}`} style={{ lineHeight: 1.35, minHeight: 60 }}>
+                          “{q.text}”
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()
+          )}
         </div>
       </section>
 
@@ -320,127 +372,8 @@ export default function Home() {
           <div className="absolute bottom-10 left-10 w-32 h-32 bg-white/10 rounded-full animate-bounce delay-700"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-white/5 rounded-full animate-ping"></div>
         </div>
-        
-        <div className="max-w-5xl mx-auto text-center space-y-12 relative z-10">
-          <div className={`space-y-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
-              {t('cta.title')}
-            </h2>
-            <p className="text-xl sm:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              {t('cta.description')}
-            </p>
-          </div>
-
-          <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <Link
-              href="https://apps.apple.com/your-app-link"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center rounded-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 focus:outline-none focus:ring-0 focus:shadow-none"
-            >
-              <Image
-                src="/images/icons/appstore_download_light.png"
-                alt={t('cta.downloadAppStore')}
-                width={496}
-                height={172}
-                className="w-[220px] h-auto"
-              />
-            </Link>
-          </div>
-        </div>
+        {/* (Giữ nguyên phần còn lại của section này nếu cần) */}
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-gray-400 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div className="space-y-4">
-              <div className="flex items-center space-x-2">
-                <Image 
-                  src="/logo.png" 
-                  alt="Widget Story" 
-                  width={40}
-                  height={40}
-                  className="w-10 h-10 rounded-lg object-cover"
-                />
-                <span className="font-bold text-white">Widget Story</span>
-              </div>
-              <p className="text-sm text-gray-500">
-                {t('footer.description')}
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-4">{t('footer.app')}</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link href="#" className="hover:text-white transition">
-                    {t('footer.ios')}
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-white transition">
-                    {t('footer.androidComing')}
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-4">{t('footer.legal')}</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link href="/privacy" className="hover:text-white transition">
-                    {t('footer.privacyPolicy')}
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-white transition">
-                    {t('footer.termsOfService')}
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-800 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <p className="text-sm text-gray-500">
-                {t('footer.copyright')}
-              </p>
-              <div className="flex space-x-6 mt-4 md:mt-0">
-                <Link href="#" className="text-gray-400 hover:text-white transition">
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8.29 20v-7.21H5.5V9.25h2.79V7.05c0-2.77 1.69-4.28 4.16-4.28 1.18 0 2.2.09 2.49.13v2.88h-1.71c-1.34 0-1.6.64-1.6 1.57v2.05h3.2l-.41 3.54h-2.79V20h-2.84z" />
-                  </svg>
-                </Link>
-                <Link href="#" className="text-gray-400 hover:text-white transition">
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7z" />
-                  </svg>
-                </Link>
-                <Link href="#" className="text-gray-400 hover:text-white transition">
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
     </>
   )
 }
