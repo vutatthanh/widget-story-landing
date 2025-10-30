@@ -331,20 +331,21 @@ export default function Home() {
             {premiumList.map((feature, index) => (
               <div
                 key={index}
-                className={`rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group bg-gradient-to-tr from-yellow-400 to-yellow-600 border-0 ${
+                className={`bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group border border-gray-100 overflow-hidden ${
                   isVisible 
                     ? 'opacity-100 translate-y-0' 
                     : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="mb-4 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center text-white drop-shadow-2xl" style={{color:'#fffbe7', textShadow:'0 2px 22px #c09e47'}}>{feature.icon}</div>
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-yellow-200 transition-colors duration-300">
+                <div className="mb-4 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center text-purple-500">{feature.icon}</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-300">
                   {feature.title}
                 </h3>
-                <p className="text-yellow-50 leading-relaxed group-hover:text-yellow-100 transition-colors duration-300">
+                <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
                   {feature.description}
                 </p>
+                <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-purple-200 transition-colors duration-300 pointer-events-none"></div>
               </div>
             ))}
           </div>
