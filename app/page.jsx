@@ -377,6 +377,94 @@ export default function Home() {
         </div>
         {/* (Giữ nguyên phần còn lại của section này nếu cần) */}
       </section>
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-400 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div className="space-y-4">
+              <div className="flex items-center space-x-2">
+                <Image 
+                  src="/logo.png" 
+                  alt="Widget Story" 
+                  width={40}
+                  height={40}
+                  className="w-10 h-10 rounded-lg object-cover"
+                />
+                <span className="font-bold text-white">Widget Story</span>
+              </div>
+              <p className="text-sm text-gray-500">
+                {t('footer.description')}
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-white mb-4">{t('footer.app')}</h4>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <Link href="#" className="hover:text-white transition">
+                    {t('footer.ios')}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-white transition">
+                    {t('footer.androidComing')}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-white mb-4">{t('footer.legal')}</h4>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <Link href="/privacy" className="hover:text-white transition">
+                    {t('footer.privacyPolicy')}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-white transition">
+                    {t('footer.termsOfService')}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <p className="text-sm text-gray-500">
+                {t('footer.copyright')}
+              </p>
+              <div className="flex space-x-6 mt-4 md:mt-0">
+                <Link href="#" className="text-gray-400 hover:text-white transition">
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M8.29 20v-7.21H5.5V9.25h2.79V7.05c0-2.77 1.69-4.28 4.16-4.28 1.18 0 2.2.09 2.49.13v2.88h-1.71c-1.34 0-1.6.64-1.6 1.57v2.05h3.2l-.41 3.54h-2.79V20h-2.84z" />
+                  </svg>
+                </Link>
+                <Link href="#" className="text-gray-400 hover:text-white transition">
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7z" />
+                  </svg>
+                </Link>
+                <Link href="#" className="text-gray-400 hover:text-white transition">
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </>
   )
 }
