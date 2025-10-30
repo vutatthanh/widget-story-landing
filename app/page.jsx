@@ -1,5 +1,6 @@
 'use client'
 
+import { AppWindow, Ban, Book, BookText, Bookmark, Brain, KeyRound, Lamp, Palette, RefreshCw, Share2, Smartphone, Sparkles } from "lucide-react"
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -59,6 +60,25 @@ export default function Home() {
       </div>
     )
   }
+
+  const featuresList = [
+    { icon: <Smartphone className="w-7 h-7" />, title: t('features.items')[0].title, description: t('features.items')[0].description },
+    { icon: <BookText className="w-7 h-7" />, title: t('features.items')[1].title, description: t('features.items')[1].description },
+    { icon: <Bookmark className="w-7 h-7" />, title: t('features.items')[2].title, description: t('features.items')[2].description },
+    { icon: <Lamp className="w-7 h-7" />, title: t('features.items')[3].title, description: t('features.items')[3].description },
+    { icon: <Palette className="w-7 h-7" />, title: t('features.items')[4].title, description: t('features.items')[4].description },
+    { icon: <Share2 className="w-7 h-7" />, title: t('features.items')[5].title, description: t('features.items')[5].description },
+  ];
+
+  const premiumList = [
+    { icon: <KeyRound className="w-7 h-7" />, title: t('premium.features')[0].title, description: t('premium.features')[0].description },
+    { icon: <Sparkles className="w-7 h-7" />, title: t('premium.features')[1].title, description: t('premium.features')[1].description },
+    { icon: <Book className="w-7 h-7" />, title: t('premium.features')[2].title, description: t('premium.features')[2].description },
+    { icon: <Brain className="w-7 h-7" />, title: t('premium.features')[3].title, description: t('premium.features')[3].description },
+    { icon: <AppWindow className="w-7 h-7" />, title: t('premium.features')[4].title, description: t('premium.features')[4].description },
+    { icon: <RefreshCw className="w-7 h-7" />, title: t('premium.features')[5].title, description: t('premium.features')[5].description },
+    { icon: <Ban className="w-7 h-7" />, title: t('premium.features')[6].title, description: t('premium.features')[6].description },
+  ];
 
   return (
     <>
@@ -217,29 +237,23 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {t('features.items').map((feature, index) => (
+            {featuresList.map((feature, index) => (
               <div
                 key={index}
-                className={`relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group border border-gray-100 overflow-hidden ${
+                className={`relative rounded-2xl p-8 shadow-xl hover:shadow-2xl bg-slate-900 transition-all duration-500 transform hover:-translate-y-3 group border border-slate-700 overflow-hidden ${
                   isVisible 
                     ? 'opacity-100 translate-y-0' 
                     : 'opacity-0 translate-y-10'
                 }`}
-                style={{
-                  transitionDelay: `${index * 150}ms`
-                }}
+                style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-t-2xl z-20"></div>
-                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10">
-                  {feature.icon}
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300 relative z-10">
+                <div className="mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10 flex items-center justify-center text-white">{feature.icon}</div>
+                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-200 transition-colors duration-300 relative z-10">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-lg group-hover:text-gray-700 transition-colors duration-300 relative z-10">
+                <p className="text-gray-300 leading-relaxed text-lg group-hover:text-blue-100 transition-colors duration-300 relative z-10">
                   {feature.description}
                 </p>
-                <div className="absolute top-1 left-0 right-0 bottom-0 rounded-b-2xl border-2 border-transparent group-hover:border-blue-200 group-hover:border-t-0 transition-colors duration-300 pointer-events-none z-0"></div>
               </div>
             ))}
           </div>
@@ -314,28 +328,23 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {t('premium.features').map((feature, index) => (
+            {premiumList.map((feature, index) => (
               <div
                 key={index}
-                className={`bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group ${
+                className={`rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group bg-gradient-to-tr from-yellow-400 to-yellow-600 border-0 ${
                   isVisible 
                     ? 'opacity-100 translate-y-0' 
                     : 'opacity-0 translate-y-10'
                 }`}
-                style={{
-                  transitionDelay: `${index * 100}ms`
-                }}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-300">
+                <div className="mb-4 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center text-white drop-shadow-2xl" style={{color:'#fffbe7', textShadow:'0 2px 22px #c09e47'}}>{feature.icon}</div>
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-yellow-200 transition-colors duration-300">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                <p className="text-yellow-50 leading-relaxed group-hover:text-yellow-100 transition-colors duration-300">
                   {feature.description}
                 </p>
-                <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-purple-200 transition-colors duration-300 pointer-events-none"></div>
               </div>
             ))}
           </div>
