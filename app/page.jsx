@@ -99,7 +99,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
+      <section className="pt-24 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-400/15 to-purple-600/15 rounded-full blur-3xl animate-pulse"></div>
@@ -129,20 +129,20 @@ export default function Home() {
                   href="https://apps.apple.com/your-app-link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg rounded-2xl hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+                  className="group inline-flex items-center justify-center rounded-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/25"
                 >
-                  <svg
-                    className="w-7 h-7 mr-3 group-hover:rotate-12 transition-transform duration-300"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M17.05 13.5c-.91 0-1.82-.45-1.82-1.31h5.38c.14-2.2-.56-3.86-1.82-4.87-1.23-1.02-2.75-.97-4.02.14-1.56 1.36-1.73 3.85 0 5.35 1.27 1.1 2.61 1.34 4.03.58.77-.43 1.24-1.05 1.38-1.93h-5.38c.05.96.81 1.31 1.73 1.31h2.1v2.64h-2.9c-2.33 0-3.25-1.46-3.25-4.18v-2.5c0-2.72.92-4.18 3.25-4.18h2.9V6h-2.1c-.92 0-1.68.35-1.73 1.31h5.38c-.14-.88-.61-1.5-1.38-1.93-1.42-.76-2.76-.52-4.03.58-1.73 1.5-1.56 3.99 0 5.35 1.27 1.11 2.79 1.16 4.02.14 1.26-1.01 1.96-2.67 1.82-4.87h-5.38c0 .86.91 1.31 1.82 1.31h2.9v2.64h-2.1z" />
-                  </svg>
-                  {t('hero.downloadIos')}
+                  <Image
+                    src="/images/icons/appstore_download.png"
+                    alt={t('cta.downloadAppStore')}
+                    width={496}
+                    height={172}
+                    className="w-[180px] h-auto"
+                    priority
+                  />
                 </Link>
                 <Link
                   href="#features"
-                  className="group inline-flex items-center justify-center px-10 py-5 border-2 border-gray-300 text-gray-900 font-bold text-lg rounded-2xl hover:border-blue-500 hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+                  className="group inline-flex items-center justify-center h-[62px] px-8 border-2 border-gray-300 text-gray-900 font-bold text-lg rounded-2xl hover:border-blue-500 hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
                 >
                   <svg className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -178,7 +178,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <section id="features" className="pt-16 pb-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-6 mb-20">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 text-green-800 text-sm font-medium">
@@ -334,16 +334,15 @@ export default function Home() {
               href="https://apps.apple.com/your-app-link"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center px-12 py-6 bg-white text-gray-900 font-bold text-xl rounded-2xl hover:shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2"
+              className="group inline-flex items-center justify-center rounded-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/25"
             >
-              <svg
-                className="w-8 h-8 mr-4 group-hover:rotate-12 transition-transform duration-300"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M17.05 13.5c-.91 0-1.82-.45-1.82-1.31h5.38c.14-2.2-.56-3.86-1.82-4.87-1.23-1.02-2.75-.97-4.02.14-1.56 1.36-1.73 3.85 0 5.35 1.27 1.1 2.61 1.34 4.03.58.77-.43 1.24-1.05 1.38-1.93h-5.38c.05.96.81 1.31 1.73 1.31h2.1v2.64h-2.9c-2.33 0-3.25-1.46-3.25-4.18v-2.5c0-2.72.92-4.18 3.25-4.18h2.9V6h-2.1c-.92 0-1.68.35-1.73 1.31h5.38c-.14-.88-.61-1.5-1.38-1.93-1.42-.76-2.76-.52-4.03.58-1.73 1.5-1.56 3.99 0 5.35 1.27 1.11 2.79 1.16 4.02.14 1.26-1.01 1.96-2.67 1.82-4.87h-5.38c0 .86.91 1.31 1.82 1.31h2.9v2.64h-2.1z" />
-              </svg>
-              {t('cta.downloadAppStore')}
+              <Image
+                src="/images/icons/appstore_download.png"
+                alt={t('cta.downloadAppStore')}
+                width={496}
+                height={172}
+                className="w-[220px] h-auto"
+              />
             </Link>
           </div>
         </div>
