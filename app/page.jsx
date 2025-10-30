@@ -138,16 +138,9 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="pt-24 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-400/15 to-purple-600/15 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-gradient-to-tr from-pink-400/15 to-blue-600/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-yellow-400/8 to-orange-500/8 rounded-full blur-2xl animate-bounce delay-500"></div>
-        </div>
-        
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}> 
               <div className="space-y-6">
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-800 text-sm font-medium mb-4">
                   <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
@@ -161,7 +154,6 @@ export default function Home() {
                   {t('hero.description')}
                 </p>
               </div>
-
               <div className={`flex flex-col sm:flex-row gap-6 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                 <Link
                   href="https://apps.apple.com/your-app-link"
@@ -189,7 +181,6 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-
             <div className={`relative h-[500px] sm:h-[600px] transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
               <div className="relative h-full rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/10 border border-white/20">
                 <Image
@@ -200,15 +191,9 @@ export default function Home() {
                   priority
                 />
                 {/* Floating elements */}
-                <div className="absolute top-6 right-6 w-16 h-16 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center text-3xl shadow-lg animate-bounce delay-700">
-                  📱
-                </div>
-                <div className="absolute bottom-6 left-6 w-14 h-14 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center text-2xl shadow-lg animate-bounce delay-1000">
-                  📖
-                </div>
-                <div className="absolute top-1/2 right-8 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center text-xl shadow-lg animate-bounce delay-1200">
-                  🎨
-                </div>
+                <div className="absolute top-6 right-6 w-16 h-16 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center text-3xl shadow-lg animate-bounce delay-700">📱</div>
+                <div className="absolute bottom-6 left-6 w-14 h-14 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center text-2xl shadow-lg animate-bounce delay-1000">📖</div>
+                <div className="absolute top-1/2 right-8 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center text-xl shadow-lg animate-bounce delay-1200">🎨</div>
               </div>
             </div>
           </div>
@@ -367,74 +352,24 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section id="download" className="py-24 px-4 sm:px-6 lg:px-8 bg-white border-t">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="space-y-6">
-                <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-800 text-sm font-medium mb-4">
-                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
-                  New: Premium Features Available
-                </div>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-                  {t('hero.title')}{' '}
-                  <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-pulse">{t('hero.titleHighlight')}</span> {t('hero.titleSuffix')}
-                </h1>
-                <p className="text-xl sm:text-2xl text-gray-600 leading-relaxed max-w-2xl">
-                  {t('hero.description')}
-                </p>
-              </div>
-
-              <div className={`flex flex-col sm:flex-row gap-6 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                <Link
-                  href="https://apps.apple.com/your-app-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center rounded-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-0 focus:shadow-none"
-                >
-                  <Image
-                    src="/images/icons/appstore_download.png"
-                    alt={t('cta.downloadAppStore')}
-                    width={496}
-                    height={172}
-                    className="w-[180px] h-auto"
-                    priority
-                  />
-                </Link>
-                <Link
-                  href="#features"
-                  className="group inline-flex items-center justify-center h-[62px] px-8 border-2 border-black border-dashed text-gray-900 font-bold text-lg rounded-[10px] hover:border-black hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 mx-auto sm:mx-0 w-auto"
-                >
-                  <svg className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                  {t('hero.exploreMore')}
-                </Link>
-              </div>
-            </div>
-
-            <div className={`relative h-[500px] sm:h-[600px] transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-              <div className="relative h-full rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/10 border border-white/20">
-                <Image
-                  src="/images/hero/s1.png"
-                  alt="Widget Story App"
-                  fill
-                  className="object-scale-down"
-                  priority
-                />
-                {/* Floating elements */}
-                <div className="absolute top-6 right-6 w-16 h-16 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center text-3xl shadow-lg animate-bounce delay-700">
-                  📱
-                </div>
-                <div className="absolute bottom-6 left-6 w-14 h-14 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center text-2xl shadow-lg animate-bounce delay-1000">
-                  📖
-                </div>
-                <div className="absolute top-1/2 right-8 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center text-xl shadow-lg animate-bounce delay-1200">
-                  🎨
-                </div>
-              </div>
-            </div>
-          </div>
+      <section id="download" className="py-20 px-4 bg-white border-t">
+        <div className="max-w-7xl mx-auto flex flex-col items-center">
+          <h2 className="mb-8 text-3xl sm:text-4xl font-bold text-gray-900 text-center">{t('cta.title')}</h2>
+          <Link
+            href="https://apps.apple.com/your-app-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center justify-center rounded-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-0 focus:shadow-none"
+          >
+            <Image
+              src="/images/icons/appstore_download.png"
+              alt={t('cta.downloadAppStore')}
+              width={496}
+              height={172}
+              className="w-[220px] h-auto"
+              priority
+            />
+          </Link>
         </div>
       </section>
       {/* Footer */}
