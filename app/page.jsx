@@ -321,9 +321,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                {t('premium.title').replace(/^([A-Za-zÀ-ỹ& ]+?)(\s|$)/, '$1')}
-              </span>
+              {t('premium.title') && <>{t('premium.title')}{' '}</>}
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-pulse">{t('premium.titleHighlight')}</span>
+              {t('premium.titleSuffix') && <>{' '}{t('premium.titleSuffix')}</>}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               {t('premium.subtitle')}
