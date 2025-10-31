@@ -176,7 +176,7 @@ export default function Home() {
               </div>
               <div className={`flex flex-col sm:flex-row gap-6 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                 <Link
-                  href="https://apps.apple.com/your-app-link"
+                  href="https://apps.apple.com/app/id6754702288"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center justify-center rounded-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-0 focus:shadow-none"
@@ -369,7 +369,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex flex-col items-center">
           <h2 className="mb-8 text-3xl sm:text-4xl font-bold text-gray-900 text-center">{t('cta.title')}</h2>
           <Link
-            href="https://apps.apple.com/your-app-link"
+            href="https://apps.apple.com/app/id6754702288"
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center justify-center rounded-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-0 focus:shadow-none"
