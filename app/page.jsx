@@ -157,9 +157,9 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
+      <section className="pt-20 sm:pt-24 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-start md:items-center">
             <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}> 
               <div className="space-y-6">
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-800 text-sm font-medium mb-4">
@@ -388,7 +388,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-400 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
                 <Image 
@@ -431,6 +431,21 @@ export default function Home() {
                   <Link href="#" className="hover:text-white transition">
                     {t('footer.termsOfService')}
                   </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-white mb-4">{t('footer.contact')}</h4>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <a href="mailto:hi@widgetstory.com" className="hover:text-white transition cursor-pointer underline decoration-dotted underline-offset-2">
+                    hi@widgetstory.com
+                  </a>
+                </li>
+                <li>
+                  <a href="https://widgetstory.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition cursor-pointer underline decoration-dotted underline-offset-2">
+                    widgetstory.com
+                  </a>
                 </li>
               </ul>
             </div>
