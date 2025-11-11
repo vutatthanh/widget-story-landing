@@ -400,9 +400,6 @@ export default function Home() {
                 />
                 <span className="font-bold text-white">Widget Story</span>
               </div>
-              <p className="text-sm text-gray-500">
-                {t('footer.description')}
-              </p>
             </div>
             <div>
               <h4 className="font-semibold text-white mb-4">{t('footer.app')}</h4>
