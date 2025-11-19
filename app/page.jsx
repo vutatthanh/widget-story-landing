@@ -209,8 +209,8 @@ export default function Home() {
             <div className={`relative h-[500px] sm:h-[600px] transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
               <div className="absolute -top-8 -left-6 w-24 h-24 sm:w-28 sm:h-28 bg-pink-100/70 rounded-full blur-2xl"></div>
               <div className="absolute -bottom-10 -right-6 w-28 h-28 sm:w-32 sm:h-32 bg-purple-100/60 rounded-full blur-2xl"></div>
-              <div className="relative h-full rounded-[36px] p-3 bg-gradient-to-br from-pink-50 via-white to-blue-50 border border-pink-100/70 shadow-[0_25px_60px_rgba(79,70,229,0.15)]">
-                <div className="relative h-full rounded-[30px] border-2 border-dashed border-pink-200/80 bg-white/80 backdrop-blur-sm p-3 sm:p-4">
+              <div className="relative h-full rounded-[36px] px-3 py-2 sm:p-3 bg-gradient-to-br from-pink-50 via-white to-blue-50 border border-pink-100/70 shadow-[0_25px_60px_rgba(79,70,229,0.15)]">
+                <div className="relative h-full rounded-[30px] border-2 border-dashed border-pink-200/80 bg-white/80 backdrop-blur-sm px-3 py-2 sm:px-5 sm:py-3">
                   <div className="absolute top-3 right-6 flex items-center gap-2 text-[11px] font-medium text-rose-500 uppercase tracking-[0.25em]">
                     <span className="w-2 h-2 bg-rose-400 rounded-full"></span>
                     Blossom Frame
