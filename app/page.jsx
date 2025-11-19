@@ -1,10 +1,10 @@
 'use client'
 
 import { AppWindow, Ban, Book, BookText, Bookmark, Brain, KeyRound, Lamp, Palette, RefreshCw, Share2, Smartphone, Sparkles } from "lucide-react"
+import { Dancing_Script } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { Dancing_Script } from 'next/font/google'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 import { useLanguage } from '../lib/contexts/LanguageContext'
 
@@ -211,11 +211,11 @@ export default function Home() {
               <div className="absolute -bottom-10 -right-6 w-28 h-28 sm:w-32 sm:h-32 bg-purple-100/60 rounded-full blur-2xl"></div>
               <div className="relative h-full rounded-[36px] px-3 py-2 sm:p-3 bg-gradient-to-br from-pink-50 via-white to-blue-50 border border-pink-100/70 shadow-[0_25px_60px_rgba(79,70,229,0.15)]">
                 <div className="relative h-full rounded-[30px] border-2 border-dashed border-pink-200/80 bg-white/80 backdrop-blur-sm px-3 py-2 sm:px-5 sm:py-3">
-                  <div className="absolute top-3 right-6 flex items-center gap-2 text-[11px] font-medium text-rose-500 uppercase tracking-[0.25em]">
+                  {/* <div className="absolute top-3 right-6 flex items-center gap-2 text-[11px] font-medium text-rose-500 uppercase tracking-[0.25em]">
                     <span className="w-2 h-2 bg-rose-400 rounded-full"></span>
                     Blossom Frame
-                  </div>
-                  <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex gap-2.5 text-base text-rose-400">
+                  </div> */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2.5 text-base text-rose-400 z-20 drop-shadow-sm">
                     <span className="inline-flex w-7 h-7 rounded-full border border-rose-200 items-center justify-center bg-white shadow-sm">✿</span>
                     <span className="inline-flex w-7 h-7 rounded-full border border-blue-200 items-center justify-center bg-white shadow-sm">❀</span>
                     <span className="inline-flex w-7 h-7 rounded-full border border-purple-200 items-center justify-center bg-white shadow-sm">❁</span>
