@@ -202,7 +202,7 @@ export default function Home() {
               </div>
             </div>
             <div className={`relative h-[500px] sm:h-[600px] transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-              <div className="relative h-full rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/10 border border-white/20">
+              <div className="relative h-full rounded-3xl overflow-hidden border border-white/20">
                 <Image
                   src="/images/hero/s1.jpeg"
                   alt="Widget Story App"
@@ -210,10 +210,6 @@ export default function Home() {
                   className="object-scale-down"
                   priority
                 />
-                {/* Floating elements */}
-                <div className="absolute top-6 right-6 w-16 h-16 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center text-3xl shadow-lg animate-bounce delay-700">📱</div>
-                <div className="absolute bottom-6 left-6 w-14 h-14 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center text-2xl shadow-lg animate-bounce delay-1000">📖</div>
-                <div className="absolute top-1/2 right-8 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center text-xl shadow-lg animate-bounce delay-1200">🎨</div>
               </div>
             </div>
           </div>
