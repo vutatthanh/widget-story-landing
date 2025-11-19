@@ -4,8 +4,14 @@ import { AppWindow, Ban, Book, BookText, Bookmark, Brain, KeyRound, Lamp, Palett
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import { Dancing_Script } from 'next/font/google'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 import { useLanguage } from '../lib/contexts/LanguageContext'
+
+const dancingScript = Dancing_Script({
+  subsets: ['latin'],
+  weight: ['700'],
+})
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -157,14 +163,13 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-16 sm:pt-20 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
+      <section className="pt-20 sm:pt-24 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 items-start md:items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
             <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}> 
               <div className="space-y-6">
-                <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-800 text-sm font-medium mb-4">
-                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
-                  New: Premium Features Available
+                <div className={`inline-block text-5xl sm:text-6xl font-extrabold tracking-tight mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-pulse ${dancingScript.className}`}>
+                  Widget Story
                 </div>
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-[1.1] tracking-tight">
                   {t('hero.title')}{' '}
@@ -202,14 +207,29 @@ export default function Home() {
               </div>
             </div>
             <div className={`relative h-[500px] sm:h-[600px] transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-              <div className="relative h-full rounded-3xl overflow-hidden border border-white/20">
-                <Image
-                  src="/images/hero/s1.jpeg"
-                  alt="Widget Story App"
-                  fill
-                  className="object-scale-down"
-                  priority
-                />
+              <div className="absolute -top-8 -left-6 w-24 h-24 sm:w-28 sm:h-28 bg-pink-100/70 rounded-full blur-2xl"></div>
+              <div className="absolute -bottom-10 -right-6 w-28 h-28 sm:w-32 sm:h-32 bg-purple-100/60 rounded-full blur-2xl"></div>
+              <div className="relative h-full rounded-[36px] p-3 bg-gradient-to-br from-pink-50 via-white to-blue-50 border border-pink-100/70 shadow-[0_25px_60px_rgba(79,70,229,0.15)]">
+                <div className="relative h-full rounded-[30px] border-2 border-dashed border-pink-200/80 bg-white/80 backdrop-blur-sm p-3 sm:p-4">
+                  <div className="absolute top-3 right-6 flex items-center gap-2 text-[11px] font-medium text-rose-500 uppercase tracking-[0.25em]">
+                    <span className="w-2 h-2 bg-rose-400 rounded-full"></span>
+                    Blossom Frame
+                  </div>
+                  <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex gap-2.5 text-base text-rose-400">
+                    <span className="inline-flex w-7 h-7 rounded-full border border-rose-200 items-center justify-center bg-white shadow-sm">✿</span>
+                    <span className="inline-flex w-7 h-7 rounded-full border border-blue-200 items-center justify-center bg-white shadow-sm">❀</span>
+                    <span className="inline-flex w-7 h-7 rounded-full border border-purple-200 items-center justify-center bg-white shadow-sm">❁</span>
+                  </div>
+                  <div className="relative h-full rounded-3xl overflow-hidden bg-white shadow-inner shadow-rose-100/70">
+                    <Image
+                      src="/images/hero/s1.jpeg"
+                      alt="Widget Story App"
+                      fill
+                      className="object-contain"
+                      priority
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
