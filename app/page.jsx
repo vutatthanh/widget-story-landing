@@ -168,7 +168,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-start">
             <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}> 
               <div className="space-y-6">
-                <div className={`inline-block text-5xl sm:text-6xl font-extrabold tracking-tight mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-pulse ${dancingScript.className}`}>
+                <div className={`inline-block text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.15] pb-1 mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-pulse ${dancingScript.className}`}>
                   Widget Story
                 </div>
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-[1.1] tracking-tight">
