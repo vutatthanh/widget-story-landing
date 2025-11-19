@@ -240,10 +240,6 @@ export default function Home() {
       <section id="features" className="pt-8 pb-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-6 mb-20">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 text-green-800 text-sm font-medium">
-              <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-              Core Features
-            </div>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
               {t('features.title')}
             </h2>
@@ -252,24 +248,36 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
             {featuresList.map((feature, index) => (
               <div
                 key={index}
-                className={`relative rounded-2xl p-5 shadow-xl hover:shadow-2xl bg-slate-900 transition-all duration-500 transform hover:-translate-y-3 group border border-slate-700 overflow-hidden ${
+                className={`group relative rounded-[30px] p-1 bg-gradient-to-br from-rose-200/70 via-white to-blue-100/60 shadow-[0_25px_60px_rgba(79,70,229,0.15)] transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl ${
                   isVisible 
                     ? 'opacity-100 translate-y-0' 
                     : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className="mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10 flex items-center justify-center text-white">{feature.icon}</div>
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-200 transition-colors duration-300 relative z-10">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-300 leading-relaxed text-lg group-hover:text-blue-100 transition-colors duration-300 relative z-10">
-                  {feature.description}
-                </p>
+                <div className="absolute -top-6 -right-4 w-20 h-20 bg-pink-200/60 blur-2xl rounded-full"></div>
+                <div className="absolute -bottom-8 -left-6 w-24 h-24 bg-purple-200/50 blur-2xl rounded-full"></div>
+                <div className="relative h-full rounded-[26px] border border-white/70 bg-white/90 backdrop-blur-sm p-6 flex flex-col gap-5">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-2xl border-2 border-pink-200/80 bg-gradient-to-br from-purple-50 via-white to-pink-50 text-2xl flex items-center justify-center text-rose-500 shadow-inner shadow-rose-100/70 group-hover:scale-105 transition-transform duration-300">
+                      {feature.icon}
+                    </div>
+                    <div className="flex flex-col text-xs uppercase tracking-[0.3em] font-semibold text-rose-400">
+                      <span>Widget Story</span>
+                      <span className="text-slate-400">Feature</span>
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 leading-tight group-hover:text-purple-600 transition-colors duration-300">
+                    {feature.title}
+                  </h3>
+                  <p className="text-base text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors duration-300 flex-1">
+                    {feature.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -346,25 +354,36 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
             {premiumList.map((feature, index) => (
               <div
                 key={index}
-                className={`bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group border border-gray-100 overflow-hidden ${
+                className={`group relative rounded-[28px] p-[1px] bg-gradient-to-br from-violet-200/60 via-white to-indigo-100/70 shadow-[0_20px_55px_rgba(99,102,241,0.25)] transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl overflow-hidden ${
                   isVisible 
                     ? 'opacity-100 translate-y-0' 
                     : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="mb-4 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center text-purple-500">{feature.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-300">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                  {feature.description}
-                </p>
-                <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-purple-200 transition-colors duration-300 pointer-events-none"></div>
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-white/20 to-purple-100/60 transition-opacity duration-500"></div>
+                <div className="absolute -top-8 -left-6 w-24 h-24 bg-pink-100/60 blur-3xl rounded-full"></div>
+                <div className="absolute -bottom-10 -right-6 w-28 h-28 bg-indigo-100/60 blur-3xl rounded-full"></div>
+                <div className="relative bg-white/90 backdrop-blur-lg rounded-[26px] border border-white/70 p-6 flex flex-col gap-5 h-full">
+                  <div className="flex items-center justify-between">
+                    <div className="w-14 h-14 rounded-2xl border-2 border-violet-100 bg-gradient-to-br from-indigo-50 via-white to-pink-50 text-2xl flex items-center justify-center text-purple-500 shadow-inner shadow-purple-100/70 group-hover:scale-110 transition-transform duration-300">
+                      {feature.icon}
+                    </div>
+                    <div className="text-[11px] uppercase tracking-[0.4em] text-violet-400 font-semibold">
+                      Premium
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 leading-tight group-hover:text-purple-600 transition-colors duration-300">
+                    {feature.title}
+                  </h3>
+                  <p className="text-base text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300 flex-1">
+                    {feature.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
