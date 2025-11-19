@@ -204,7 +204,7 @@ export default function Home() {
             <div className={`relative h-[500px] sm:h-[600px] transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
               <div className="relative h-full rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/10 border border-white/20">
                 <Image
-                  src="/images/hero/s1.jpg"
+                  src="/images/hero/s1.jpeg"
                   alt="Widget Story App"
                   fill
                   className="object-scale-down"
