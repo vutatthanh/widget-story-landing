@@ -157,7 +157,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-20 sm:pt-24 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
+      <section className="pt-16 sm:pt-20 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-start md:items-center">
             <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}> 
@@ -217,7 +217,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="pt-16 pb-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <section id="features" className="pt-8 pb-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-6 mb-20">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 text-green-800 text-sm font-medium">
