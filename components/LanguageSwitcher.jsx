@@ -14,6 +14,9 @@ export default function LanguageSwitcher({ onAction }) {
     { code: 'ru', name: 'Русский', flag: '🇷🇺' },
     { code: 'zh', name: '中文', flag: '🇨🇳' },
     { code: 'ko', name: '한국어', flag: '🇰🇷' },
+    { code: 'fr', name: 'Français', flag: '🇫🇷' },
+    { code: 'pt', name: 'Português', flag: '🇵🇹' },
+    { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
   ]
 
   const currentLanguage = languages.find(lang => lang.code === language) || languages[0]
