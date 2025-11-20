@@ -17,6 +17,22 @@ export default function LanguageSwitcher({ onAction }) {
     { code: 'fr', name: 'Français', flag: '🇫🇷' },
     { code: 'pt', name: 'Português', flag: '🇵🇹' },
     { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+    { code: 'es', name: 'Español', flag: '🇪🇸' },
+    { code: 'it', name: 'Italiano', flag: '🇮🇹' },
+    { code: 'ar', name: 'العربية', flag: '🇸🇦' },
+    { code: 'hi', name: 'हिन्दी', flag: '🇮🇳' },
+    { code: 'th', name: 'ไทย', flag: '🇹🇭' },
+    { code: 'id', name: 'Bahasa Indonesia', flag: '🇮🇩' },
+    { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
+    { code: 'nl', name: 'Nederlands', flag: '🇳🇱' },
+    { code: 'pl', name: 'Polski', flag: '🇵🇱' },
+    { code: 'sv', name: 'Svenska', flag: '🇸🇪' },
+    { code: 'no', name: 'Norsk', flag: '🇳🇴' },
+    { code: 'da', name: 'Dansk', flag: '🇩🇰' },
+    { code: 'fi', name: 'Suomi', flag: '🇫🇮' },
+    { code: 'cs', name: 'Čeština', flag: '🇨🇿' },
+    { code: 'hu', name: 'Magyar', flag: '🇭🇺' },
+    { code: 'ro', name: 'Română', flag: '🇷🇴' },
   ]
 
   const currentLanguage = languages.find(lang => lang.code === language) || languages[0]
@@ -40,7 +56,7 @@ export default function LanguageSwitcher({ onAction }) {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+        <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50 max-h-96 overflow-y-auto">
           {languages.map((lang) => (
             <button
               key={lang.code}
@@ -51,7 +67,7 @@ export default function LanguageSwitcher({ onAction }) {
                   onAction()
                 }
               }}
-              className={`w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-gray-50 transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg ${
+              className={`w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-gray-50 transition-colors duration-200 ${
                 language === lang.code ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
               }`}
             >
