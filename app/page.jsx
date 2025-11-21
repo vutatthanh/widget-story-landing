@@ -4,7 +4,7 @@ import { AppWindow, Ban, Book, BookText, Bookmark, Brain, KeyRound, Lamp, Palett
 import { Dancing_Script } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 import { useLanguage } from '../lib/contexts/LanguageContext'
 
@@ -12,6 +12,23 @@ const dancingScript = Dancing_Script({
   subsets: ['latin'],
   weight: ['700'],
 })
+
+const heroImageSources = [
+  {
+    src: '/images/hero/s2.png',
+    alt: 'Widget Story App preview 1',
+  },
+  {
+    src: '/images/hero/s3.png',
+    alt: 'Widget Story App preview 2',
+  },
+  {
+    src: '/images/hero/s4.png',
+    alt: 'Widget Story App preview 3',
+  },
+]
+
+const heroFlowerIcons = ['✿', '❀', '❁', '❋']
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -21,6 +38,10 @@ export default function Home() {
   const [quoteIndex, setQuoteIndex] = useState(0)
   const [isQuoteDark, setIsQuoteDark] = useState(false)
   const [isQuoteTransitioning, setIsQuoteTransitioning] = useState(false)
+  const [heroImageIndex, setHeroImageIndex] = useState(0)
+  const [isHeroImageTransitioning, setIsHeroImageTransitioning] = useState(false)
+  const heroImageTransitionTimeoutRef = useRef(null)
+  const heroImageAutoIntervalRef = useRef(null)
 
   useEffect(() => {
     setIsVisible(true)
@@ -57,6 +78,43 @@ export default function Home() {
     }, 5000)
     return () => clearInterval(interval);
   }, [quotes, quoteIndex]);
+
+  const changeHeroImage = useCallback((resolver) => {
+    if (heroImageTransitionTimeoutRef.current) {
+      clearTimeout(heroImageTransitionTimeoutRef.current)
+    }
+    setIsHeroImageTransitioning(true)
+    heroImageTransitionTimeoutRef.current = setTimeout(() => {
+      setHeroImageIndex((prev) => {
+        const resolved = typeof resolver === 'function' ? resolver(prev) : resolver
+        const normalized = ((resolved % heroImageSources.length) + heroImageSources.length) % heroImageSources.length
+        return normalized
+      })
+      setIsHeroImageTransitioning(false)
+      heroImageTransitionTimeoutRef.current = null
+    }, 350)
+  }, [])
+
+  useEffect(() => {
+    if (heroImageSources.length <= 1) return
+    heroImageAutoIntervalRef.current = setInterval(() => {
+      changeHeroImage((prev) => (prev + 1) % heroImageSources.length)
+    }, 5500)
+
+    return () => {
+      if (heroImageAutoIntervalRef.current) {
+        clearInterval(heroImageAutoIntervalRef.current)
+      }
+    }
+  }, [changeHeroImage])
+
+  useEffect(() => {
+    return () => {
+      if (heroImageTransitionTimeoutRef.current) {
+        clearTimeout(heroImageTransitionTimeoutRef.current)
+      }
+    }
+  }, [])
 
   // Don't render until language is loaded
   if (isLoading) {
@@ -206,28 +264,50 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className={`relative h-[500px] sm:h-[600px] transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+            <div className={`relative h-[460px] sm:h-[560px] transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
               <div className="absolute -top-8 -left-6 w-24 h-24 sm:w-28 sm:h-28 bg-pink-100/70 rounded-full blur-2xl"></div>
               <div className="absolute -bottom-10 -right-6 w-28 h-28 sm:w-32 sm:h-32 bg-purple-100/60 rounded-full blur-2xl"></div>
-              <div className="relative h-full rounded-[36px] px-3 py-2 sm:p-3 bg-gradient-to-br from-pink-50 via-white to-blue-50 border border-pink-100/70 shadow-[0_25px_60px_rgba(79,70,229,0.15)]">
-                <div className="relative h-full rounded-[30px] border-2 border-dashed border-pink-200/80 bg-white/80 backdrop-blur-sm px-3 py-2 sm:px-5 sm:py-3">
+              <div className="relative h-full rounded-[36px] px-3 pt-3 pb-6 sm:px-5 sm:pt-4 sm:pb-8 bg-gradient-to-br from-pink-50 via-white to-blue-50 border border-pink-100/70 shadow-[0_25px_60px_rgba(79,70,229,0.15)]">
+                <div className="relative h-full rounded-[30px] border-2 border-dashed border-pink-200/80 bg-white/80 backdrop-blur-sm px-3 pt-2 pb-10 sm:px-5 sm:pt-3 sm:pb-12">
                   {/* <div className="absolute top-3 right-6 flex items-center gap-2 text-[11px] font-medium text-rose-500 uppercase tracking-[0.25em]">
                     <span className="w-2 h-2 bg-rose-400 rounded-full"></span>
                     Blossom Frame
                   </div> */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2.5 text-base text-rose-400 z-20 drop-shadow-sm">
-                    <span className="inline-flex w-7 h-7 rounded-full border border-rose-200 items-center justify-center bg-white shadow-sm">✿</span>
-                    <span className="inline-flex w-7 h-7 rounded-full border border-blue-200 items-center justify-center bg-white shadow-sm">❀</span>
-                    <span className="inline-flex w-7 h-7 rounded-full border border-purple-200 items-center justify-center bg-white shadow-sm">❁</span>
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3 text-base text-rose-400 z-20 drop-shadow-sm">
+                    {heroImageSources.map((image, index) => {
+                      const isActive = index === heroImageIndex
+                      const icon = heroFlowerIcons[index % heroFlowerIcons.length]
+                      return (
+                        <button
+                          key={image.src}
+                          type="button"
+                          aria-label={`Xem ảnh hero ${index + 1}`}
+                          onClick={() => {
+                            if (isActive || isHeroImageTransitioning) return
+                            changeHeroImage(() => index)
+                          }}
+                          className={`inline-flex w-8 h-8 rounded-full border items-center justify-center bg-white shadow-sm transition-all duration-300 ${
+                            isActive
+                              ? 'border-rose-400 text-rose-500 scale-105'
+                              : 'border-rose-200 text-rose-300 hover:text-rose-500 hover:border-rose-300'
+                          } ${isHeroImageTransitioning ? 'pointer-events-none' : ''}`}
+                        >
+                          {icon}
+                        </button>
+                      )
+                    })}
                   </div>
                   <div className="relative h-full rounded-3xl overflow-hidden bg-white shadow-inner shadow-rose-100/70">
-                    <Image
-                      src="/images/hero/s1.jpeg"
-                      alt="Widget Story App"
-                      fill
-                      className="object-contain"
-                      priority
-                    />
+                    <div className={`absolute inset-0 transition-all duration-500 ease-out ${isHeroImageTransitioning ? 'opacity-0 scale-[0.985]' : 'opacity-100 scale-100'}`}>
+                      <Image
+                        key={heroImageSources[heroImageIndex].src}
+                        src={heroImageSources[heroImageIndex].src}
+                        alt={heroImageSources[heroImageIndex].alt}
+                        fill
+                        className="object-contain"
+                        priority={heroImageIndex === 0}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
