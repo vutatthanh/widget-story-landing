@@ -555,8 +555,8 @@ export default function Home() {
                   </a>
                 </li>
                 <li>
-                  <a href="https://widgetstory.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition cursor-pointer underline decoration-dotted underline-offset-2">
-                    widgetstory.com
+                  <a href="https://widgetstory.app-nob.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition cursor-pointer underline decoration-dotted underline-offset-2">
+                    widgetstory.app-nob.com
                   </a>
                 </li>
               </ul>

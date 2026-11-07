@@ -182,7 +182,7 @@ export default function PrivacyPolicy() {
                   <strong>{t('privacy.sections.contact.email')}:</strong> tech@app-nob.com
                 </li>
                 <li className="text-gray-700">
-                  <strong>{t('privacy.sections.contact.website')}:</strong> https://widgetstory.com
+                  <strong>{t('privacy.sections.contact.website')}:</strong> https://widgetstory.app-nob.com
                 </li>
               </ul>
               <p className="mt-4 text-gray-600 italic">
